@@ -8,6 +8,7 @@ public class ClienteEspecial extends Cliente{
 	 */
 	ClienteEspecial(String nome, int cpf, int valor){
 		super(nome, cpf, valor);
+		
 	}
 	
 	/* Metodo que retorna o valor do atributo tipo do objeto atual */
@@ -16,10 +17,18 @@ public class ClienteEspecial extends Cliente{
 	}
 	
 	public boolean obterEmprestimo(int valor) {
+		if (valor <= 0 || valor + this.getValorDaDivida() > dividaMaxima) return false;
 		
-		//TODO implemente seu codigo aqui
+		int novoValorDaDivida  = this.getValorDaDivida() + valor;
+		this.setValorDaDivida(novoValorDaDivida);
 		
-		return false;
+//		valorDaDivida += valor;
+		int novoValorContaCorrente = this.getValorContaCorrente() + valor;
+		this.setValorContaCorrente(novoValorContaCorrente);
+//		valorContaCorrente += valor;
+		
+		return true;
+		
 	}
 	
 }

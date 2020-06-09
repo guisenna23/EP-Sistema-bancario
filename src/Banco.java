@@ -51,9 +51,15 @@ public class Banco {
 	 */
 	boolean adicionarGerente(Gerente gerente){
 		
-		// TODO implemente seu codigo aqui
-		
-		return false;
+		if (numGerentes == 10) return false;
+		for(Gerente obj : gerentes) {
+			if (obj == null) continue;
+			if(gerente.cpf == obj.cpf) return false;
+		}
+		gerentes[numGerentes] = gerente;
+		numGerentes++;
+
+		return true;
 	}
 	
 }

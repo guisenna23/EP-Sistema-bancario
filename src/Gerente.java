@@ -47,6 +47,7 @@ public class Gerente extends Pessoa implements InterfaceGerente{
 		if(numClientes == 20) return false;
 		
 		for(Cliente obj : clientes) {
+			if (obj == null) continue;
 			if(cliente.cpf == obj.cpf) return false;
 		}
 		clientes[numClientes] = cliente;
@@ -71,7 +72,8 @@ public class Gerente extends Pessoa implements InterfaceGerente{
 	public void cobrarTodosEmprestimos() {
 			
 		for(Cliente cliente : clientes) {
-			if(cliente.getValorDaDivida() == 0) continue;
+			
+			if( cliente==null || cliente.getValorDaDivida() == 0) continue;
 			if(cliente.getValorContaCorrente() >= cliente.getValorDaDivida()) {
 				
 				int novoValorContaCorrente = cliente.getValorContaCorrente() - cliente.getValorDaDivida();
